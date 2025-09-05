@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Script Your Scholar – English Literature Thesis & Research Support</title>
+  <meta name="description" content="PhD Thesis & Research Paper support in English Literature, editing, literature review and proofreading" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0e1320;          /* deep navy */
+      --card: #11182a;        /* slightly lighter */
+      --accent: #e4b34e;      /* antique gold */
+      --text: #e9edf6;        /* near-white */
+      --muted: #9fb0d0;       /* muted slate */
+      --link: #9cd1ff;        /* soft blue */
+      --ok: #34d399;          /* teal green */
+      --danger: #ef4444;      
+      --radius: 18px;
+      --shadow: 0 8px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: radial-gradient(1200px 600px at 80% -10%, #1a2647 0%, #0e1320 60%), var(--bg);
+      line-height:1.6;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(6px);
+      background: rgba(14,19,32,.7); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{max-width:1100px; margin:auto; padding:10px 18px; display:flex; align-items:center; gap:18px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px}
+    .brand .logo{width:36px; height:36px; border-radius:12px; background:linear-gradient(145deg,#e8c56e,#b3821d); display:grid; place-items:center; color:#0b0f1a; box-shadow:var(--shadow)}
+    .brand span{font-family: "Playfair Display", serif; font-weight:700; font-size:1.05rem}
+    nav ul{list-style:none; margin:0; padding:0; display:flex; gap:18px; align-items:center}
+    nav a{color:var(--text); opacity:.9; font-weight:500}
+    .cta{margin-left:auto; display:flex; gap:10px}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:10px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:#11182a; color:var(--text); font-weight:600; transition:.18s ease; box-shadow:0 2px 10px rgba(0,0,0,.2)}
+    .btn:hover{transform:translateY(-1px); box-shadow:0 6px 20px rgba(0,0,0,.35)}
+    .btn.primary{background:linear-gradient(135deg, #e6c069, #c6942d); color:#0b0f1a; border:0}
+    .btn.ghost{background:transparent}
+    .mobile-toggle{display:none}
+
+    /* Hero */
+    .hero{max-width:1100px; margin:0 auto; padding:70px 18px 40px; display:grid; grid-template-columns: 1.1fr .9fr; gap:30px}
+    .hero h1{font-family:"Playfair Display", serif; line-height:1.15; font-size: clamp(2rem, 5vw, 3.25rem); margin:.2em 0 .3em}
+    .hero p{color:var(--muted); font-size:1.05rem}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); padding:22px; border-radius:var(--radius); box-shadow:var(--shadow)}
+    .hero .actions{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+    .note{display:flex; align-items:center; gap:8px; color:#b8c7e6; font-size:.95rem; margin-top:10px}
+
+    /* Sections */
+    section{max-width:1100px; margin:0 auto; padding:60px 18px}
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+    .grid-4{display:grid; grid-template-columns: repeat(4, 1fr); gap:18px}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    h2{font-family:"Playfair Display", serif; font-size: clamp(1.4rem, 3vw, 2rem); margin:0 0 12px}
+    h3{font-size:1.05rem; margin:.2em 0 .3em}
+    .muted{color:var(--muted)}
+
+    .badges{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .badge{font-size:.78rem; padding:6px 10px; border-radius:999px; background:#0b1020; border:1px solid rgba(255,255,255,.12)}
+
+    /* Testimonials */
+    .quote{font-style:italic; color:#d8e0f3}
+    .who{color:#9fb0d0; font-size:.95rem}
+
+    /* CTA band */
+    .cta-band{background:linear-gradient(90deg, rgba(230,192,105,.08), rgba(156,209,255,.05)); border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08)}
+    .cta-inner{max-width:1100px; margin:0 auto; padding:36px 18px; display:flex; flex-wrap:wrap; align-items:center; gap:14px; justify-content:space-between}
+
+    /* Footer */
+    footer{border-top:1px solid rgba(255,255,255,.08); padding:24px 18px; color:#b8c7e6}
+    footer .wrap{max-width:1100px; margin:0 auto; display:flex; gap:18px; align-items:center; justify-content:space-between; flex-wrap:wrap}
+
+    /* Modal */
+    .modal{position:fixed; inset:0; display:none; place-items:center; background:rgba(6,9,16,.65); z-index:60}
+    .modal.active{display:grid}
+    .modal .box{background:var(--card); border:1px solid rgba(255,255,255,.12); border-radius:20px; padding:22px; width:min(520px, 92vw); box-shadow:var(--shadow)}
+    .modal .box h3{margin-top:0}
+    .row{display:flex; gap:12px; flex-wrap:wrap}
+
+    /* Responsive */
+    @media (max-width: 900px){
+      .hero{grid-template-columns: 1fr; padding-top:50px}
+      .grid-3{grid-template-columns: 1fr}
+      .grid-4{grid-template-columns: 1fr 1fr}
+      nav ul{display:none}
+      .mobile-toggle{display:inline-flex; margin-left:auto}
+      .cta{display:none}
+      .mobile-menu{display:none; position:absolute; left:0; right:0; top:58px; background:#0f1527; border-bottom:1px solid rgba(255,255,255,.08)}
+      .mobile-menu a{display:block; padding:12px 18px; border-top:1px solid rgba(255,255,255,.06); color:var(--text)}
+      .mobile-menu .cta-row{display:flex; gap:10px; padding:12px 18px}
+    }
+    @media (max-width: 520px){
+      .grid-4{grid-template-columns: 1fr}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">✒️</div>
+        <span>Script Your Scholar</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cta">
+        <a class="btn ghost" href="#quote">Quote of the Day</a>
+        <a class="btn primary" href="#get-quote" id="getQuoteTop">Get a Free Quote</a>
+      </div>
+      <button class="btn mobile-toggle" id="menuBtn" aria-label="Open menu">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+      <div class="cta-row">
+        <a class="btn ghost" href="#quote">Quote of the Day</a>
+        <a class="btn primary" href="#get-quote">Get a Free Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div>
+      <div class="badge">English Literature • MA • MPhil • PhD</div>
+      <h1>Expert Thesis & Research Support — <br/>Script with Purpose. Research with Confidence.</h1>
+      <p>
+        We help you craft original, high‑quality academic work with clear structure, polished language and the right methods. From topic refinement to journal submission, get guidance led by a PhD in English Literature.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#get-quote">Get a Free Quote</a>
+        <button class="btn" id="messageBtn">Send Us a Message</button>
+        <a class="btn ghost" href="#services">Explore Services</a>
+      </div>
+      <div class="note">✨ Ethical, confidential and deadline‑focused.</div>
+    </div>
+    <div class="hero-card">
+      <h3 style="margin-top:0">What you get</h3>
+      <ul class="muted">
+        <li>Topic selection & research proposal</li>
+        <li>Literature review</li>
+        <li>Chapter‑wise guidance and editing</li>
+        <li>Research paper</li>
+        <li>Proofreading, citations</li>
+      </ul>
+      <div class="badges">
+        <div class="badge">PhD‑led</div>
+        <div class="badge">Original Work, Non-AI based</div>
+        <div class="badge">On‑time</div>
+        <div class="badge">India & Global</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Script Your Scholar</h2>
+    <p class="muted">Run by a doctorate in English Literature, Script Your Scholar provides specialized support for MA and PhD scholars. We combine rigorous research practices with clear and elegant academic writing to help you present work that is truly yours — refined, coherent, and ready for submission.</p>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Services</h2>
+    <div class="grid-4">
+      <article class="card">
+        <h3>Thesis & Dissertation</h3>
+        <p class="muted">Topic selection, synopsis, literature review, research methodology, chapter‑wise guidance</p>
+      </article>
+      <article class="card">
+        <h3>Research Papers</h3>
+        <p class="muted">Drafting, editing, abstract & keywords, journal targeting, reviewer response guidance.</p>
+      </article>
+      <article class="card">
+        <h3>Editing & Proofreading</h3>
+        <p class="muted">Grammar, tone, clarity, flow, citations, and formatting.</p>
+      </article>
+    </div>
+    <div class="actions" style="margin-top:16px">
+      <a class="btn" href="#get-quote">Request a Quote</a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2>What Scholars Say</h2>
+    <div class="grid-3">
+      <div class="card">
+        <p class="quote">“Clear, professional, and supportive at every step. My PhD submission was on time and stronger.”</p>
+        <p class="who">— Ritika S., Delhi University</p>
+      </div>
+      <div class="card">
+          <p class="quote">“Helped me submit an impressive PhD thesis on time.”</p>
+        <p class="who">— Joseph K., GITAM</p>
+      </div>
+      <div class="card">
+        <p class="quote">“Great attention to structure and style; the formatting saved me weeks. My guide appreciated the theoretical framework of the thesis.”</p>
+        <p class="who">— Ananya P., Research Scholar</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get a Quote (Instructions + Buttons) -->
+  <section id="get-quote">
+    <h2>Get a Free Quote</h2>
+    <p class="muted">Choose how you’d like to start. You can fill a quick form for a detailed quote, or reach us directly.</p>
+    <div class="row" style="margin-top:12px">
+      <a class="btn primary" id="formLink" target="_blank" rel="noopener" href="#">Open Quote Request Form</a>
+      <button class="btn" id="messageBtn2">Send Us a Message</button>
+    </div>
+    <p class="muted" style="margin-top:10px">Tip: Replace the form link in the code with your Google Form URL when ready.</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Email</h3>
+        <p class="muted">Prefer email? We usually reply within a few hours on weekdays.</p>
+        <a class="btn" href="mailto:contact@scriptyourscholar.com?subject=Thesis%20Support%20Query">Email Us</a>
+      </div>
+      <div class="card">
+        <h3>WhatsApp</h3>
+        <p class="muted">Fastest for quick questions. Say hello and share your topic/word count.</p>
+        <a class="btn" id="waBtn" target="_blank" rel="noopener" href="#">Message on WhatsApp</a>
+      </div>
+      <div class="card">
+        <h3>Social</h3>
+        <p class="muted">Quotes, tips, and writing updates.</p>
+        <div class="row">
+          <a class="btn" target="_blank" rel="noopener" href="https://instagram.com/scriptyourscholar">Instagram</a>
+          <a class="btn" target="_blank" rel="noopener" href="https://www.linkedin.com/in/scriptyourscholar-389914382/">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>© <span id="year"></span> Script Your Scholar. All rights reserved.</div>
+      <div class="muted">Made with care for scholars in India & beyond.</div>
+    </div>
+  </footer>
+
+  <!-- Message Modal -->
+  <div class="modal" id="msgModal" role="dialog" aria-modal="true" aria-labelledby="msgTitle">
+    <div class="box">
+      <h3 id="msgTitle">Send Us a Message</h3>
+      <p class="muted">Choose your preferred way to reach out. Both open in a new tab/app.</p>
+      <div class="row" style="margin: 10px 0 6px">
+        <a class="btn primary" href="mailto:contact@scriptyourscholar.com?subject=Thesis%20Support%20Query&body=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." id="emailLink">Email Us</a>
+        <a class="btn" id="waQuick" target="_blank" rel="noopener" href="#">WhatsApp Us</a>
+      </div>
+      <button class="btn ghost" id="closeModal" style="margin-top:8px">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Config – replace with your details
+    const GOOGLE_FORM_URL = "#"; // https://docs.google.com/forms/d/e/1FAIpQLSfQS51KOB-4hJDT41OF0wlGrZZuNxCatkDfHF9ObnyX8y3ArQ/viewform?usp=dialog
+    const WHATSAPP_NUMBER = "919959618598"; // e.g., 919876543210 (no +, no spaces)
+    const WHATSAPP_TEXT = encodeURIComponent("Hi, I need help with my thesis or research paper.");
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => {
+      mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Quote form link + WhatsApp link wiring
+    const formLink = document.getElementById('formLink');
+    const waBtn = document.getElementById('waBtn');
+    const waQuick = document.getElementById('waQuick');
+
+    function buildWaLink(){
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`;
+    }
+
+    function syncLinks(){
+      if(GOOGLE_FORM_URL && GOOGLE_FORM_URL !== '#'){
+        formLink.href = GOOGLE_FORM_URL;
+      }
+      const wa = buildWaLink();
+      if(waBtn) waBtn.href = wa;
+      if(waQuick) waQuick.href = wa;
+    }
+    syncLinks();
+
+    // Message modal
+    const messageBtn = document.getElementById('messageBtn');
+    const messageBtn2 = document.getElementById('messageBtn2');
+    const modal = document.getElementById('msgModal');
+    const closeModal = document.getElementById('closeModal');
+
+    function openModal(){ modal.classList.add('active'); }
+    function closeModalFn(){ modal.classList.remove('active'); }
+
+    messageBtn?.addEventListener('click', openModal);
+    messageBtn2?.addEventListener('click', openModal);
+    closeModal?.addEventListener('click', closeModalFn);
+    modal?.addEventListener('click', (e)=>{ if(e.target === modal) closeModalFn(); });
+
+    // Copy Instagram link
+    document.getElementById('copyInsta')?.addEventListener('click', async () => {
+      try{
+        await navigator.clipboard.writeText('https://instagram.com/scriptyourscholar');
+        const btn = document.getElementById('copyInsta');
+        const old = btn.textContent; btn.textContent = 'Copied!';
+        btn.style.background = 'linear-gradient(135deg,#34d399,#10b981)';
+        setTimeout(()=>{ btn.textContent = old; btn.style.background = ''; }, 1400);
+      }catch(err){ alert('Copy failed. Link: https://instagram.com/scriptyourscholar'); }
+    });
+
+    // Smooth scroll fix for anchor inside sticky header offset
+    // (Browsers handle well by default; keep for future tweaks.)
+  </script>
+</body>
+</html>
